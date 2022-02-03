@@ -1,6 +1,7 @@
+let searchString;
+
 const fetchImage = (query) => {
   const img = document.querySelector('img');
-  let searchString;
 
   if (!query) {
     searchString = 'dog';
@@ -20,6 +21,11 @@ const fetchImage = (query) => {
     })
     .then((response) => {
       img.src = response.data.images.original.url;
+      if (query) {
+        document.getElementById(
+          'refresh'
+        ).innerText = `new ${query.toLowerCase()}`;
+      }
     })
     .catch((error) => {
       alert('There has been a problem with your fetch operation:', error);
@@ -30,7 +36,7 @@ const refreshbutton = (() => {
   const button = document.getElementById('refresh');
 
   button.addEventListener('click', () => {
-    fetchImage();
+    fetchImage(searchString);
   });
 })();
 
