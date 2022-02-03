@@ -12,9 +12,17 @@ const fetchImage = (query) => {
     `https://api.giphy.com/v1/gifs/translate?api_key=hbjUgiRex7neX4tpv0Tf5xFT4HzBCmpm&s=${searchString}`,
     { mode: 'cors' }
   )
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not OK');
+      }
+      return response.json();
+    })
     .then((response) => {
       img.src = response.data.images.original.url;
+    })
+    .catch((error) => {
+      alert('There has been a problem with your fetch operation:', error);
     });
 };
 
