@@ -1,6 +1,33 @@
 let searchString;
+const img = document.querySelector('img');
 
-const fetchImage = (query) => {
+async function fetchImage(query) {
+  try {
+    if (!query) {
+      searchString = 'dog';
+    } else {
+      searchString = query.toLowerCase();
+    }
+    const response = await fetch(
+      `https://api.giphy.com/v1/gifs/translate?api_key=hbjUgiRex7neX4tpv0Tf5xFT4HzBCmpm&s=${searchString}`,
+      { mode: 'cors' }
+    );
+    const fetchData = await response.json();
+    img.src = fetchData.data.images.original.url;
+    if (query) {
+      document.getElementById(
+        'refresh'
+      ).innerText = `new ${query.toLowerCase()}`;
+      document.querySelector(
+        'h1'
+      ).innerText = `Math.random('${query.toLowerCase()}')`;
+    }
+  } catch (error) {
+    img.alt = `There has been a problem with your fetch operation:${error}`;
+  }
+}
+
+/* const fetchImage = (query) => {
   const img = document.querySelector('img');
 
   if (!query) {
@@ -33,7 +60,7 @@ const fetchImage = (query) => {
     .catch((error) => {
       alert('There has been a problem with your fetch operation:', error);
     });
-};
+}; */
 
 const refreshbutton = (() => {
   const button = document.getElementById('refresh');
