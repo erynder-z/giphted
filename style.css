@@ -32,7 +32,7 @@ button {
   border: solid 2px black;
   background-color: #f6f4e6;
   padding: 20px 10px;
-  overflow: auto;
+  overflow-y: scroll;
 }
 
 .container > img {
