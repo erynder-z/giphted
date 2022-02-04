@@ -32,6 +32,7 @@ button {
   border: solid 2px black;
   background-color: #f6f4e6;
   padding: 20px 10px;
+  overflow: auto;
 }
 
 .container > img {
@@ -65,6 +66,11 @@ button {
 .search-container > form > input {
   width: 80%;
   border: none;
+}
+
+.search-container > form > input:focus {
+  background-color: #f7edbd;
+  outline: none;
 }
 
 .search-container > form > button {
