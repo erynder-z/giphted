@@ -25,6 +25,9 @@ const fetchImage = (query) => {
         document.getElementById(
           'refresh'
         ).innerText = `new ${query.toLowerCase()}`;
+        document.querySelector(
+          'h1'
+        ).innerText = `Math.random('${query.toLowerCase()}')`;
       }
     })
     .catch((error) => {
