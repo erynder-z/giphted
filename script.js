@@ -79,6 +79,13 @@ const search = (() => {
     searchbar.value = '';
     fetchImage(query);
   });
+
+  searchbar.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      searchButton.click();
+    }
+  });
 })();
 
 fetchImage();
