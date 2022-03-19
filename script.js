@@ -1,10 +1,6 @@
 let searchString;
 const img = document.querySelector('img');
 
-const somethingstupid = (() => {
-  body.innerHTML = '';
-})();
-
 async function fetchImage(query) {
   try {
     if (!query) {
